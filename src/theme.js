@@ -1,9 +1,11 @@
 const theme = {
     colors: {
+      mainBackGround: '#e1e4e8',
       textPrimary: '#24292e',
       textSecondary: '#586069',
       primary: '#0366d6',
-      appBarBackground: '#24292e'
+      appBarBackground: '#24292e',
+      white: 'white'
     },
     fontSizes: {
       body: 14,
@@ -18,7 +20,15 @@ const theme = {
       bold: '700',
     },
     padding: {
-      basic: 20
+      basic: 20,
+      small: 10
+    },
+    logo: {
+      width: 60,
+      height: 60,
+    },
+    button: {
+      
     }
   };
   

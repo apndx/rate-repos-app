@@ -10,12 +10,12 @@ const styles = StyleSheet.create({
 
 const repositories = [
   {
-    id: 'jaredpalmer.formik',
-    fullName: 'jaredpalmer/formik',
+    id: 'formium.formik',
+    fullName: 'formium/formik',
     description: 'Build forms in React, without the tears',
     language: 'TypeScript',
-    forksCount: 1589,
-    stargazersCount: 21553,
+    forksCount: 2300,
+    stargazersCount: 27900,
     ratingAverage: 88,
     reviewCount: 4,
     ownerAvatarUrl: 'https://avatars2.githubusercontent.com/u/4060187?v=4',
