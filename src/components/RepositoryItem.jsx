@@ -26,7 +26,8 @@ const styles = StyleSheet.create({
     backgroundColor: theme.colors.white,
     flexDirection: 'column',
     justifyContent: 'space-around',
-    textAlign: 'center'
+    textAlign: 'center',
+    padding: theme.padding.small,
   },
   logo: {
     width: theme.logo.width,
