@@ -19,6 +19,9 @@ const styles = StyleSheet.create({
   languageTab: {
     color: theme.colors.white,
     backgroundColor: theme.colors.primary,
+    alignSelf: 'flex-start',
+    borderRadius: 4,
+    padding: 2
   },
   fontSizeSubheading: {
     fontSize: theme.fontSizes.subheading,
@@ -26,17 +29,30 @@ const styles = StyleSheet.create({
   fontWeightBold: {
     fontWeight: theme.fontWeights.bold,
   },
+  heading: {
+    fontSize: theme.fontSizes.subheading,
+    fontWeight: theme.fontWeights.bold,
+    color: theme.colors.textPrimary
+  },
+  description: {
+    fontSize: theme.fontSizes.body,
+    fontWeight: theme.fontWeights.normal,
+    color: theme.colors.textSecondary,
+    flexWrap: 'wrap'
+  },
 
 });
 
-const Text = ({ color, fontSize, fontWeight, style, tab, ...props }) => {
+const Text = ({ color, fontSize, fontWeight, style, type, ...props }) => {
   const textStyle = [
     styles.text,
     color === 'textSecondary' && styles.colorTextSecondary,
     color === 'primary' && styles.colorPrimary,
     fontSize === 'subheading' && styles.fontSizeSubheading,
     fontWeight === 'bold' && styles.fontWeightBold,
-    tab === 'language' && styles.languageTab,
+    type === 'heading' && styles.heading,
+    type === 'language' && styles.languageTab,
+    type === 'description' && styles.description,
     style,
   ];
 

@@ -2,6 +2,8 @@ import React from 'react';
 import { View, Image, StyleSheet } from 'react-native';
 import Text from './Text';
 import theme from '../theme';
+import { numberRounder } from '../utils';
+
 
 const styles = StyleSheet.create({
   container: {
@@ -16,9 +18,8 @@ const styles = StyleSheet.create({
   },
   nameDescLanguage: {
     flexDirection: 'column',
-    justifyContent: 'flex-start',
     padding: theme.padding.small,
-    flexWrap: 'wrap'
+    flexShrink: 1
   },
   statistics: {
     flex: 1,
@@ -30,16 +31,6 @@ const styles = StyleSheet.create({
   logo: {
     width: theme.logo.width,
     height: theme.logo.height
-  },
-  heading: {
-    fontSize: theme.fontSizes.subheading,
-    fontWeight: theme.fontWeights.bold,
-    color: theme.colors.textPrimary
-  },
-  description: {
-    fontSize: theme.fontSizes.body,
-    fontWeight: theme.fontWeights.normal,
-    color: theme.colors.textSecondary
   },
   language: {
     color: theme.colors.floralwhite,
@@ -54,17 +45,17 @@ const ItemHeader = ({ item }) => (
     source={{ uri: item.ownerAvatarUrl }}
     />
     <View style={styles.nameDescLanguage}>
-      <Text style={styles.heading}> {item.fullName}</Text>
-      <Text style={styles.description}>{item.description}</Text>
-      <Text tab='language'>{item.language}</Text>
+      <Text type='heading'> {item.fullName}</Text>
+      <Text type='description' >{item.description}</Text>
+      <Text type='language'>{item.language}</Text>
     </View>
   </View>
 );
 
 const Statistics = ({statistic, text}) => (
   <View style={styles.statistics}>
-    <Text>{statistic}</Text>
-    <Text>{text}</Text>
+    <Text fontWeight='bold'>{statistic}</Text>
+    <Text type='description'>{text}</Text>
   </View>
 );
 
@@ -73,8 +64,8 @@ const RepositoryItem = ({ item }) => (
   <View style={styles.container}> 
     <ItemHeader item={item} />
     <View style={styles.row}>
-      <Statistics statistic={item.stargazersCount} text='Stars'/>
-      <Statistics statistic={item.forksCount} text='Forks'/>
+      <Statistics statistic={numberRounder(item.stargazersCount)} text='Stars'/>
+      <Statistics statistic={numberRounder(item.forksCount)} text='Forks'/>
       <Statistics statistic={item.reviewCount} text='Reviews'/>
       <Statistics statistic={item.ratingAverage} text='Rating'/>
     </View>
