@@ -1,6 +1,5 @@
 import React from 'react';
 import { Text as NativeText, StyleSheet } from 'react-native';
-
 import theme from '../theme';
 
 const styles = StyleSheet.create({
@@ -40,7 +39,12 @@ const styles = StyleSheet.create({
     color: theme.colors.textSecondary,
     flexWrap: 'wrap'
   },
-
+  tab: {
+    color: theme.colors.white,
+    fontSize: theme.fontSizes.heading,
+    fontWeight: theme.fontWeights.bold,
+    padding: theme.padding.small
+  },
 });
 
 const Text = ({ color, fontSize, fontWeight, style, type, ...props }) => {
@@ -53,6 +57,7 @@ const Text = ({ color, fontSize, fontWeight, style, type, ...props }) => {
     type === 'heading' && styles.heading,
     type === 'language' && styles.languageTab,
     type === 'description' && styles.description,
+    type === 'tab' && styles.tab,
     style,
   ];
 

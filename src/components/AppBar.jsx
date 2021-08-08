@@ -1,34 +1,35 @@
 import React from 'react';
-import { View, StyleSheet, Pressable, Alert, Text } from 'react-native';
-import Constants from 'expo-constants';
+
+import { View, StyleSheet } from 'react-native';
+import { Link } from 'react-router-native';
+import Text from './Text';
 import theme from '../theme';
+import Constants from 'expo-constants';
 
 const styles = StyleSheet.create({
   container: {
+    flex: 1,
+    backgroundColor: theme.colors.appBarBackground,
     padding: theme.padding.basic,
     paddingTop: Constants.statusBarHeight,
-    backgroundColor: theme.colors.appBarBackground,
   },
-  tabText: {
-    color: theme.colors.textSecondary,
-    fontSize: theme.fontSizes.heading,
-    fontWeight: theme.fontWeights.bold
-  }
+  row: {
+    flexDirection: 'row',
+    justifyContent: 'flex-start'
+  },
 });
 
-const Tab = () => {
-  return (
-    <Pressable
-      onPress={() => Alert.alert('You pressed the text!')}
-    >
-      <Text style={styles.tabText}>Repositories</Text>
-    </Pressable>
-  );
-};
 
 const AppBar = () => {
-  return <View style={styles.container}>{/* ... */}
-          <Tab></Tab>
+  return <View style={styles.container}>
+            <View style={styles.row}>
+              <Link to='/'>
+              <Text type='tab'>Repositories</Text>
+              </Link>
+              <Link to='/signIn'>
+              <Text type='tab'>Sign In </Text>
+              </Link>
+            </View>
         </View>;
 };
 
