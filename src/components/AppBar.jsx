@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { View, StyleSheet } from 'react-native';
+import { View, StyleSheet, ScrollView } from 'react-native';
 import { Link } from 'react-router-native';
 import Text from './Text';
 import theme from '../theme';
@@ -10,27 +10,26 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: theme.colors.appBarBackground,
-    padding: theme.padding.basic,
-    paddingTop: Constants.statusBarHeight,
+    paddingTop: Constants.statusBarHeight
   },
   row: {
     flexDirection: 'row',
-    justifyContent: 'flex-start'
+    marginHorizontal: 20
   },
 });
 
 
 const AppBar = () => {
   return <View style={styles.container}>
-            <View style={styles.row}>
+            <ScrollView style={styles.row} horizontal={true}>
               <Link to='/'>
               <Text type='tab'>Repositories</Text>
               </Link>
               <Link to='/signIn'>
-              <Text type='tab'>Sign In </Text>
+              <Text type='tab'>Sign In</Text>
               </Link>
-            </View>
-        </View>;
+            </ScrollView>
+          </View>;
 };
 
 export default AppBar;

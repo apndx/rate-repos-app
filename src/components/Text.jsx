@@ -43,7 +43,7 @@ const styles = StyleSheet.create({
     color: theme.colors.white,
     fontSize: theme.fontSizes.heading,
     fontWeight: theme.fontWeights.bold,
-    padding: theme.padding.small
+    paddingRight: theme.padding.small
   },
 });
 
