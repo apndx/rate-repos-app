@@ -8,7 +8,7 @@ import Constants from 'expo-constants';
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
+    flex: 0,
     backgroundColor: theme.colors.appBarBackground,
     paddingTop: Constants.statusBarHeight
   },
