@@ -28,7 +28,12 @@ const theme = {
       height: 60,
     },
     button: {
-      
+      height: 40,
+      width: 300,
+      paddingHorizontal: 5,
+    },
+    margins: {
+      marginXs: 5
     }
   };
   

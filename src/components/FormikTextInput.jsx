@@ -4,25 +4,15 @@ import { useField } from 'formik';
 
 import TextInput from './TextInput';
 import Text from './Text';
+import theme from '../theme';
 
 const styles = StyleSheet.create({
   input: {
-    height: 40,
-    width: 300,
-    paddingHorizontal: 5,
-    backgroundColor: 'white',
-    marginBottom: 5,
-  },
-  inputContainer: {
-    marginBottom: 20,
-    shadowColor: '#000',
-    shadowOffset: {
-      width: 0,
-      height: 2,
-    },
-    shadowOpacity: 0.23,
-    shadowRadius: 2.62,
-    elevation: 4,
+    height: theme.button.height,
+    width: theme.button.width,
+    paddingHorizontal: theme.padding.small,
+    backgroundColor: theme.colors.white,
+    marginBottom: theme.margins.marginXs,
   },
   error: { textAlign: 'center', height: 17.5 },
 });
@@ -38,7 +28,7 @@ const FormikTextInput = ({ name, ...props }) => {
         onBlur={() => helpers.setTouched(true)}
         value={field.value}
         error={showError}
-        style={styles.inputContainer}
+        style={styles.input}
         {...props}
       />
       {showError && <Text style={styles.error}>{meta.error}</Text>}
