@@ -5,7 +5,8 @@ const theme = {
       textSecondary: '#586069',
       primary: '#0366d6',
       appBarBackground: '#24292e',
-      white: 'white'
+      white: 'white',
+      error: '#d73a4a'
     },
     fontSizes: {
       body: 14,
@@ -34,6 +35,11 @@ const theme = {
     },
     margins: {
       marginXs: 5
+    },
+    border: {
+      borderRadius: 4,
+      borderWidth: 1,
+      borderStyle: 'solid'
     }
   };
   

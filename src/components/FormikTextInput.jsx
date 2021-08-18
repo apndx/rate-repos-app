@@ -13,11 +13,29 @@ const styles = StyleSheet.create({
     paddingHorizontal: theme.padding.small,
     backgroundColor: theme.colors.white,
     marginBottom: theme.margins.marginXs,
+    borderStyle: theme.border.style,
+    borderRadius: theme.border.borderRadius,
+    borderWidth: theme.border.borderWidth,
+    borderColor: theme.colors.white
   },
-  error: { textAlign: 'center', height: 17.5 },
+  inputError: {
+    height: theme.button.height,
+    width: theme.button.width,
+    paddingHorizontal: theme.padding.small,
+    backgroundColor: theme.colors.white,
+    marginBottom: theme.margins.marginXs,
+    borderRadius: theme.border.borderRadius,
+    borderWidth: theme.border.borderWidth,
+    borderStyle: theme.border.style,
+    borderColor: theme.colors.error,
+  },
+  error: { 
+    color: theme.colors.error,
+    marginBottom: theme.margins.marginXs, 
+  },
 });
 
-const FormikTextInput = ({ name, ...props }) => {
+const FormikTextInput = ({ name, secureTextEntry, ...props }) => {
   const [field, meta, helpers] = useField(name);
   const showError = meta.touched && meta.error;
 
@@ -28,7 +46,8 @@ const FormikTextInput = ({ name, ...props }) => {
         onBlur={() => helpers.setTouched(true)}
         value={field.value}
         error={showError}
-        style={styles.input}
+        style={showError ? styles.inputError : styles.input}
+        secureTextEntry={secureTextEntry}
         {...props}
       />
       {showError && <Text style={styles.error}>{meta.error}</Text>}
