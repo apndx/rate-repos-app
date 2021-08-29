@@ -20,6 +20,17 @@ const GET_REPOSITORIES = gql`
   }
 `;
 
+const GET_AUTH_STATUS = gql`
+query {
+  authorizedUser {
+    id
+    username
+  }
+}
+`;
+
+
 export default {
-  GET_REPOSITORIES
+  GET_REPOSITORIES,
+  GET_AUTH_STATUS
 };

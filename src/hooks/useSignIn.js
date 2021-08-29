@@ -17,11 +17,9 @@ const useSignIn = () => {
     const accessToken = data.authorize.accessToken;
     await authStorage.setAccessToken(accessToken);
     apolloClient.resetStore();
-    return accessToken;
   };
 
   return [signIn, result];
 };
 
 export default useSignIn;
-

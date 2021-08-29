@@ -5,6 +5,7 @@ import { Link } from 'react-router-native';
 import Text from './Text';
 import theme from '../theme';
 import Constants from 'expo-constants';
+import useAuthorizedUser from '../hooks/useAuthorizedUser';
 
 const styles = StyleSheet.create({
   container: {
@@ -18,16 +19,21 @@ const styles = StyleSheet.create({
   },
 });
 
-
 const AppBar = () => {
+  const authStatus = useAuthorizedUser();
+  console.log('auth status', authStatus);
+
   return <View style={styles.container}>
             <ScrollView style={styles.row} horizontal={true}>
               <Link to='/'>
               <Text type='tab'>Repositories</Text>
               </Link>
-              <Link to='/signIn'>
+              {!authStatus &&  <Link to='/signIn'>
               <Text type='tab'>Sign In</Text>
-              </Link>
+              </Link>}
+              {authStatus &&  <Link to='/signOut'>
+              <Text type='tab'>Sign Out</Text>
+              </Link>}
             </ScrollView>
           </View>;
 };
