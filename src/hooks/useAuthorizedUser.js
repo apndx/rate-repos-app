@@ -5,7 +5,8 @@ const useAuthorizedUser = () => {
   const { data } = useQuery(queries.GET_AUTH_STATUS, {
     fetchPolicy: 'cache-and-network',
   });
-  const authStatus = data.authorizedUser === null ? false : true;
+
+  const authStatus = (data && data.authorizedUser !== null) ? true : false;
   return authStatus;
 };
 

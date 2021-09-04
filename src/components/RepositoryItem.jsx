@@ -46,16 +46,16 @@ const ItemHeader = ({ item }) => (
     source={{ uri: item.ownerAvatarUrl }}
     />
     <View style={styles.nameDescLanguage}>
-      <Text type='heading'> {item.fullName}</Text>
-      <Text type='description' >{item.description}</Text>
-      <Text type='language'>{item.language}</Text>
+      <Text type='heading' testID='fullName'> {item.fullName}</Text>
+      <Text type='description' testID='description' >{item.description}</Text>
+      <Text type='language' testID='language'>{item.language}</Text>
     </View>
   </View>
 );
 
-const Statistics = ({statistic, text}) => (
+const Statistics = ({statistic, text, testID}) => (
   <View style={styles.statistics}>
-    <Text fontWeight='bold'>{statistic}</Text>
+    <Text testID={testID} fontWeight='bold'>{statistic}</Text>
     <Text type='description'>{text}</Text>
   </View>
 );
@@ -65,10 +65,10 @@ const RepositoryItem = ({ item }) => (
   <View style={styles.container}> 
     <ItemHeader item={item} />
     <View style={styles.row}>
-      <Statistics statistic={numberRounder(item.stargazersCount)} text='Stars'/>
-      <Statistics statistic={numberRounder(item.forksCount)} text='Forks'/>
-      <Statistics statistic={item.reviewCount} text='Reviews'/>
-      <Statistics statistic={item.ratingAverage} text='Rating'/>
+      <Statistics testID='starGazerCount' statistic={numberRounder(item.stargazersCount)} text='Stars'/>
+      <Statistics testID='forksCount' statistic={numberRounder(item.forksCount)} text='Forks'/>
+      <Statistics testID='reviewCount' statistic={item.reviewCount} text='Reviews'/>
+      <Statistics testID='ratingAverage' statistic={item.ratingAverage} text='Rating'/>
     </View>
   </View>
   );
