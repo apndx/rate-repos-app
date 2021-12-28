@@ -6,7 +6,7 @@ const ItemSeparator = () => <View style={styles.separator} />;
 
 const renderItem = ({ item }) => (
 
-  <RepositoryItem item={item} list={true} />
+  <RepositoryItem item={item} />
 );
 
 const styles = StyleSheet.create({

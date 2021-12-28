@@ -7,7 +7,7 @@ import SignIn from './SignIn';
 import SignOut from './SignOut';
 import AppBar from './AppBar';
 import theme from '../theme';
-import RepositoryItem from './RepositoryItem';
+import SingleRepositoryItem from './SingleRepositoryItem';
 
 const styles = StyleSheet.create({
   container: {
@@ -31,7 +31,7 @@ const Main = () => {
           <SignOut />
         </Route>
         <Route path="/:id" exact
-        render={({ match }) => <RepositoryItem id={match.params.id} list={false}/>}/>
+        render={({ match }) => <SingleRepositoryItem id={match.params.id} />}/>
         <Route path="/" exact>
           <RepositoryList />
         </Route>
