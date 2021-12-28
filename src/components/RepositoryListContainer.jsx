@@ -5,7 +5,8 @@ import RepositoryItem from './RepositoryItem';
 const ItemSeparator = () => <View style={styles.separator} />;
 
 const renderItem = ({ item }) => (
-  <RepositoryItem item={item} />
+
+  <RepositoryItem item={item} list={true} />
 );
 
 const styles = StyleSheet.create({
