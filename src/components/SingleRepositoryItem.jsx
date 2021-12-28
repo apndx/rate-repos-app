@@ -59,13 +59,8 @@ const styles = StyleSheet.create({
 });
 
 const SingleRepositoryItem = ({ id }) => {
-  
-  console.log('tänne vain id', id);
 
-  const handleLink = (url) => {
-    Linking.openURL(url);
-    console.log(url);
-  };
+  console.log('tänne vain id', id);
 
   if (id) {
     console.log('id', id);
@@ -75,9 +70,8 @@ const SingleRepositoryItem = ({ id }) => {
     if (repository) {
       return ( repository  &&
         <View style={styles.container}> 
-          <RepositoryContent repository={repository} git={true} handleLink={handleLink}/>
-          <OpenURLButton style={styles.button} onPress={handleLink(repository.url)} testID="gitLink">
-              <Text style={styles.buttonText}>Open in GitHub </Text>
+          <RepositoryContent repository={repository} />
+          <OpenURLButton styles={styles} url={repository.url} title="Open in GitHub" testID="gitLink">
             </OpenURLButton>
         </View>
         );
@@ -85,10 +79,9 @@ const SingleRepositoryItem = ({ id }) => {
       return null;
     }
   
-  }
-  
-  };
-  const OpenURLButton = ({ url }) => {
+  }};
+
+  const OpenURLButton = ({ url, title, styles }) => {
     const handlePress = useCallback(async () => {
       // Checking if the link is supported for links with custom URL scheme.
       const supported = await Linking.canOpenURL(url);
@@ -102,9 +95,11 @@ const SingleRepositoryItem = ({ id }) => {
       }
     }, [url]);
   
-    return <Pressable style={styles.button} onPress={handlePress(url)} testID="gitLink">
-          <Text style={styles.buttonText}>Open in GitHub </Text>
-        </Pressable>;
+    return <Pressable style={styles.button} onPress={handlePress} >
+              <Text style={styles.buttonText}>{title}</Text>
+            </Pressable>;
   };
 
 export default SingleRepositoryItem;
+ 
+
