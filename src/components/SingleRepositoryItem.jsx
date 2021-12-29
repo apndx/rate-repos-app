@@ -1,8 +1,9 @@
 import React from "react";
-import { View, StyleSheet } from 'react-native';
+import { FlatList, StyleSheet, View } from 'react-native';
 import theme from '../theme';
 import useRepository from '../hooks/useRepository';
 import RepositoryContent from './RepositoryContent';
+import Text from './Text';
 
 const styles = StyleSheet.create({
   container: {
@@ -13,6 +14,18 @@ const styles = StyleSheet.create({
   }
 });
 
+const ReviewItem = ({ review }) => {
+  // Single review item
+  <View style={styles.container}> 
+    <Text type='rating'>{review.rating}</Text>
+    <Text type='username'>{review.user.username}</Text>
+    <Text type='created'>{review.createdAt}</Text>
+    <Text type='review'>{review.text}</Text>
+  </View>;
+};
+
+
+
 const SingleRepositoryItem = ({ id }) => {
 
   if (id) {
@@ -20,9 +33,13 @@ const SingleRepositoryItem = ({ id }) => {
 
     if (repository) {
       return ( repository  &&
-        <View style={styles.container}> 
-          <RepositoryContent repository={repository} git={true}/>
-        </View>
+
+        <FlatList
+        data={repository.reviews}
+        renderItem={({ item }) => <ReviewItem review={item} />}
+        keyExtractor={({ id }) => id}
+        ListHeaderComponent={() => <RepositoryContent repository={repository} git={true}/>}
+        />
         );
     } else {
       return null;
