@@ -45,6 +45,12 @@ const styles = StyleSheet.create({
     fontWeight: theme.fontWeights.bold,
     paddingRight: theme.padding.small
   },
+  rating: {
+    color: theme.colors.primary,
+    borderStyle: 'solid',
+    borderColor:  theme.colors.primary,
+    fontWeight: theme.fontWeights.bold
+  }
 });
 
 const Text = ({ color, fontSize, fontWeight, style, type, ...props }) => {
@@ -58,6 +64,7 @@ const Text = ({ color, fontSize, fontWeight, style, type, ...props }) => {
     type === 'language' && styles.languageTab,
     type === 'description' && styles.description,
     type === 'tab' && styles.tab,
+    type === 'rating' && styles.rating,
     style,
   ];
 

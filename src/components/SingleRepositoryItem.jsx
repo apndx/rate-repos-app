@@ -11,6 +11,7 @@ const styles = StyleSheet.create({
     flex: 1,
     paddingTop: theme.padding.basic,
     paddingLeft: theme.padding.basic,
+    paddingRight: theme.padding.basic,
     backgroundColor: theme.colors.white
   },
   reviewItem: {
@@ -21,20 +22,42 @@ const styles = StyleSheet.create({
     textAlign: 'center',
     padding: theme.padding.small,
   },
+  row: {
+    flexDirection: 'row',
+    justifyContent: 'flex-start',
+    backgroundColor: theme.colors.white,
+  },
+  separator: {
+    height: 10,
+  },
+  rating: {
+    width: 50,
+    height: 50,
+    backgroundColor: theme.colors.white,
+    borderColor: theme.colors.primary,
+    borderWidth: 2,
+    borderRadius: 25,
+    padding: theme.padding.small,
+    margin: 10
+  }
 });
 
 const ReviewItem = ({ review }) => {
-  // Single review item
   return (
-    <View style={styles.reviewItem}> 
-    <Text type='rating'>{review.rating}</Text>
-    <Text type='username'>{review.user.username}</Text>
-    <Text type='created'>{format(new Date(review.createdAt), 'dd.MM.yyyy')}</Text>
-    <Text type='review'>{review.text}</Text>
-  </View>
+    <View style={styles.row}> 
+      <View style={styles.rating}>
+        <Text type='rating'>{review.rating}</Text>
+      </View>
+      <View style={styles.reviewItem}>
+        <Text type='username' fontWeight='bold'>{review.user.username}</Text>
+        <Text type='description'>{format(new Date(review.createdAt), 'dd.MM.yyyy')}</Text>
+        <Text type='review'>{review.text}</Text>
+      </View>
+    </View>
   );
 };
 
+const ItemSeparator = () => <View style={styles.separator} />;
 
 const SingleRepositoryItem = ({ id }) => {
 
@@ -54,6 +77,7 @@ const SingleRepositoryItem = ({ id }) => {
         data={usedReviews }
         renderItem={({ item }) => <ReviewItem review={item} />}
         keyExtractor={({ id }) => id}
+        ItemSeparatorComponent={ItemSeparator}
         ListHeaderComponent={() => <RepositoryContent repository={repository} git={true}/>}
         />
         );
