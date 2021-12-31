@@ -41,9 +41,9 @@ const styles = StyleSheet.create({
   },
   tab: {
     color: theme.colors.white,
-    fontSize: theme.fontSizes.heading,
+    fontSize: theme.fontSizes.subheading,
     fontWeight: theme.fontWeights.bold,
-    paddingRight: theme.padding.small
+    paddingRight: theme.padding.basic
   },
   rating: {
     color: theme.colors.primary,

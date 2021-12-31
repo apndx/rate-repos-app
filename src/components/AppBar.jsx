@@ -28,6 +28,9 @@ const AppBar = () => {
               <Link to='/'>
               <Text type='tab'>Repositories</Text>
               </Link>
+              {authStatus &&  <Link to='/review'>
+              <Text type='tab'>Create a review</Text>
+              </Link>}
               {!authStatus &&  <Link to='/signIn'>
               <Text type='tab'>Sign In</Text>
               </Link>}

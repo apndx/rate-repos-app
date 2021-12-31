@@ -3,6 +3,7 @@ import { StyleSheet, View } from 'react-native';
 import { Route, Switch, Redirect } from 'react-router-native';
 
 import RepositoryList from './RepositoryList';
+import CreateReview from './CreateReview';
 import SignIn from './SignIn';
 import SignOut from './SignOut';
 import AppBar from './AppBar';
@@ -29,6 +30,9 @@ const Main = () => {
         </Route>
         <Route path="/signOut" exact>
           <SignOut />
+        </Route>
+        <Route path="/review" exact>
+          <CreateReview />
         </Route>
         <Route path="/:id" exact
         render={({ match }) => <SingleRepositoryItem id={match.params.id} />}/>

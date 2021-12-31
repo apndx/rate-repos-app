@@ -8,6 +8,15 @@ mutation credentials($username: String!, $password: String!) {
 }
 `;
 
+const CREATE_REVIEW = gql`
+mutation review($repositoryName: String!, $ownerName: String!, $rating: Int!, $text: String) {
+  createReview(review: {repositoryName: $repositoryName, ownerName: $ownerName, rating: $rating, text: $text}) {
+    id
+  }
+}
+`;
+
 export default {
-  SIGN_IN
+  SIGN_IN,
+  CREATE_REVIEW
 };
