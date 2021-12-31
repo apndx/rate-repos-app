@@ -3,7 +3,7 @@ import queries from '../graphql/queries';
 
 const useRepository = ( id ) => {
 
-  const { loading, error, data} = useQuery(queries.GET_REPOSITORY, {fetchPolicy: 'cache-and-network', variables: { id },
+  const { loading, error, data } = useQuery(queries.GET_REPOSITORY, {fetchPolicy: 'cache-and-network', variables: { id },
   });
 
   if (loading) return null;

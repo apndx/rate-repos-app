@@ -11,7 +11,7 @@ const useCreateReview = () => {
 
   const createReview = async ({ repositoryName, ownerName, rating, text }) => {
     console.log(repositoryName, ownerName, rating, text);
-    const { data } = await mutate({ variables: { repositoryName, ownerName, rating, text } });
+    await mutate({ variables: { repositoryName, ownerName, rating, text } });
 
     apolloClient.resetStore();
   };

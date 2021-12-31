@@ -32,10 +32,13 @@ const AppBar = () => {
               <Text type='tab'>Create a review</Text>
               </Link>}
               {!authStatus &&  <Link to='/signIn'>
-              <Text type='tab'>Sign In</Text>
+              <Text type='tab'>Sign in</Text>
+              </Link>}
+              {!authStatus &&  <Link to='/signUp'>
+              <Text type='tab'>Sign up</Text>
               </Link>}
               {authStatus &&  <Link to='/signOut'>
-              <Text type='tab'>Sign Out</Text>
+              <Text type='tab'>Sign out</Text>
               </Link>}
             </ScrollView>
           </View>;

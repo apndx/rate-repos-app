@@ -66,7 +66,6 @@ const SingleRepositoryItem = ({ id }) => {
 
     if (repository) {
       const { reviews } = repository;
-      console.log(reviews);
 
       const usedReviews = reviews
       ? reviews.edges.map(edge => edge.node)
