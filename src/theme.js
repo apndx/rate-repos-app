@@ -29,6 +29,7 @@ const theme = {
     bold: '700',
   },
   padding: {
+    big: 30,
     basic: 20,
     small: 10
   },
@@ -42,7 +43,8 @@ const theme = {
     paddingHorizontal: 5,
   },
   margins: {
-    marginXs: 5
+    marginXs: 5,
+    basic: 20
   },
   border: {
     borderRadius: 4,

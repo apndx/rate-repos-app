@@ -11,11 +11,12 @@ const styles = StyleSheet.create({
   container: {
     flex: 0,
     backgroundColor: theme.colors.appBarBackground,
-    paddingTop: Constants.statusBarHeight
+    paddingTop: Constants.statusBarHeight,
+    paddingBottom: theme.padding.basic,
   },
   row: {
     flexDirection: 'row',
-    marginHorizontal: 20
+    marginHorizontal: theme.margins.basic
   },
 });
 

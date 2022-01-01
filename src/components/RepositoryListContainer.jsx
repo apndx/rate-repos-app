@@ -1,6 +1,9 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { FlatList, View, StyleSheet } from 'react-native';
 import RepositoryItem from './RepositoryItem';
+import useRepositories from '../hooks/useRepositories';
+import { Picker } from '@react-native-picker/picker';
+import theme from '../theme';
 
 const ItemSeparator = () => <View style={styles.separator} />;
 
@@ -13,9 +16,15 @@ const styles = StyleSheet.create({
   separator: {
     height: 10,
   },
+  picker: {
+    margin: theme.padding.big
+  }
 });
 
-const RepositoryListContainer = ({ repositories }) => {
+const RepositoryListContainer = () => {
+  
+  const [orderBy, setOrderBy] = useState('latest');
+  const { repositories } = useRepositories();
 
   // Get the nodes from the edges array
   const repositoryNodes = repositories
@@ -27,6 +36,16 @@ const RepositoryListContainer = ({ repositories }) => {
         data={repositoryNodes}
         ItemSeparatorComponent={ItemSeparator}
         renderItem={renderItem}
+        ListHeaderComponent={() => 
+          <Picker style={styles.picker}
+            selectedValue={orderBy}
+            onValueChange={(itemValue, itemIndex) =>
+              setOrderBy(itemValue)
+            }>
+            <Picker.Item label='Latest repositories' value='latest' />
+            <Picker.Item label='Highest rated repositories' value='highestRated' />
+            <Picker.Item label='Lowest rated repositories' value='lowestRated' />
+          </Picker>}
       />
     );
 };
