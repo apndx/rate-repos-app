@@ -24,9 +24,9 @@ const styles = StyleSheet.create({
 const RepositoryListContainer = () => {
   
   const [orderBy, setOrderBy] = useState('latest');
-  const { repositories } = useRepositories();
 
-  // Get the nodes from the edges array
+  const { repositories } = useRepositories(orderBy);
+
   const repositoryNodes = repositories
     ? repositories.edges.map(edge => edge.node)
     : [];
