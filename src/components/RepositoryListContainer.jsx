@@ -1,9 +1,10 @@
-import React, { useState } from 'react';
-import { FlatList, View, StyleSheet } from 'react-native';
+import React, { useState, useMemo } from 'react';
+import { FlatList, View, StyleSheet, TextInput } from 'react-native';
 import RepositoryItem from './RepositoryItem';
 import useRepositories from '../hooks/useRepositories';
 import { Picker } from '@react-native-picker/picker';
 import theme from '../theme';
+import debounce from 'lodash.debounce';
 
 const ItemSeparator = () => <View style={styles.separator} />;
 
@@ -21,11 +22,35 @@ const styles = StyleSheet.create({
   }
 });
 
+const RepositoryListHeader = ({orderBy, setOrderBy, setSearchKeyword}) => {
+
+  const debouncedChangeHandler = useMemo(
+    () => debounce(setSearchKeyword, 500), []);
+
+  return (
+  <View style={styles.container}>
+    <TextInput 
+      name="search" 
+      placeholder="Search" 
+      testID="searchField"         
+      onChangeText={debouncedChangeHandler}/>
+    <Picker 
+      style={styles.picker}
+      selectedValue={orderBy}
+      onValueChange={(itemValue, itemIndex) => setOrderBy(itemValue)}>
+    <Picker.Item label='Latest repositories' value='latest' />
+    <Picker.Item label='Highest rated repositories' value='highestRated' />
+    <Picker.Item label='Lowest rated repositories' value='lowestRated' />
+  </Picker>
+</View>);
+};
+ 
 const RepositoryListContainer = () => {
   
   const [orderBy, setOrderBy] = useState('latest');
+  const [searchKeyword, setSearchKeyword] = useState('');
 
-  const { repositories } = useRepositories(orderBy);
+  const { repositories } = useRepositories(orderBy, searchKeyword);
 
   const repositoryNodes = repositories
     ? repositories.edges.map(edge => edge.node)
@@ -36,16 +61,11 @@ const RepositoryListContainer = () => {
         data={repositoryNodes}
         ItemSeparatorComponent={ItemSeparator}
         renderItem={renderItem}
-        ListHeaderComponent={() => 
-          <Picker style={styles.picker}
-            selectedValue={orderBy}
-            onValueChange={(itemValue, itemIndex) =>
-              setOrderBy(itemValue)
-            }>
-            <Picker.Item label='Latest repositories' value='latest' />
-            <Picker.Item label='Highest rated repositories' value='highestRated' />
-            <Picker.Item label='Lowest rated repositories' value='lowestRated' />
-          </Picker>}
+        ListHeaderComponent={<RepositoryListHeader 
+          orderBy={orderBy} 
+          setOrderBy={setOrderBy}
+          setSearchKeyword={setSearchKeyword}
+          />}
       />
     );
 };
