@@ -19,7 +19,19 @@ const styles = StyleSheet.create({
   },
   picker: {
     margin: theme.padding.big
-  }
+  },
+  input: {
+    height: theme.button.height,
+    width: theme.button.width,
+    backgroundColor: theme.colors.white,
+    padding: theme.padding.small,
+    marginLeft: theme.margins.basic,
+    marginTop: theme.margins.basic,
+    borderStyle: theme.border.style,
+    borderRadius: theme.border.borderRadius,
+    borderWidth: theme.border.borderWidth,
+    borderColor: theme.colors.white
+  },
 });
 
 const RepositoryListHeader = ({orderBy, setOrderBy, setSearchKeyword}) => {
@@ -32,7 +44,8 @@ const RepositoryListHeader = ({orderBy, setOrderBy, setSearchKeyword}) => {
     <TextInput 
       name="search" 
       placeholder="Search" 
-      testID="searchField"         
+      testID="searchField"
+      style={styles.input}        
       onChangeText={debouncedChangeHandler}/>
     <Picker 
       style={styles.picker}
