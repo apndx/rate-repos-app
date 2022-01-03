@@ -50,7 +50,7 @@ const RepositoryListHeader = ({orderBy, setOrderBy, setSearchKeyword}) => {
     <Picker 
       style={styles.picker}
       selectedValue={orderBy}
-      onValueChange={(itemValue, itemIndex) => setOrderBy(itemValue)}>
+      onValueChange={(itemValue) => setOrderBy(itemValue)}>
     <Picker.Item label='Latest repositories' value='latest' />
     <Picker.Item label='Highest rated repositories' value='highestRated' />
     <Picker.Item label='Lowest rated repositories' value='lowestRated' />
@@ -63,7 +63,11 @@ const RepositoryListContainer = () => {
   const [orderBy, setOrderBy] = useState('latest');
   const [searchKeyword, setSearchKeyword] = useState('');
 
-  const { repositories } = useRepositories(orderBy, searchKeyword);
+  const { repositories, fetchMore } = useRepositories(orderBy, searchKeyword);
+
+  const onEndReach = () => {
+    fetchMore();
+  };
 
   const repositoryNodes = repositories
     ? repositories.edges.map(edge => edge.node)
@@ -74,6 +78,8 @@ const RepositoryListContainer = () => {
         data={repositoryNodes}
         ItemSeparatorComponent={ItemSeparator}
         renderItem={renderItem}
+        onEndReached={onEndReach}
+        onEndReachedThreshold={0.5}
         ListHeaderComponent={<RepositoryListHeader 
           orderBy={orderBy} 
           setOrderBy={setOrderBy}

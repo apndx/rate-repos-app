@@ -22,6 +22,9 @@ Start the project locally in the server root folder:
 npm start
 ```
 
+[A GraphQL playground](http://localhost:5000/graphql) can now be accessed in a browser.
+
+
 ### Client
 
 Start the project locally in the root folder:
