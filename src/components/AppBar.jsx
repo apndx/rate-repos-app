@@ -21,7 +21,8 @@ const styles = StyleSheet.create({
 });
 
 const AppBar = () => {
-  const authStatus = useAuthorizedUser(false) ? true : false;
+  
+  const { authStatus } = useAuthorizedUser(false);
 
   return <View style={styles.container}>
             <ScrollView style={styles.row} horizontal={true}>

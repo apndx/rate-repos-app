@@ -1,7 +1,6 @@
 import useAuthStorage from '../hooks/useAuthStorage';
 import { useApolloClient } from '@apollo/client';
 
-
 const useSignOut = () => {
 
   const authStorage = useAuthStorage();
