@@ -27,7 +27,7 @@ const UserReviewsContainer = () => {
     return (
       <FlatList
       data={usedReviews }
-      renderItem={({ item }) => <ReviewItem review={item} />}
+      renderItem={({ item }) => <ReviewItem review={item} userReviews={true} />}
       onEndReached={onEndReach}
       onEndReachedThreshold={0.5}
       keyExtractor={({ id }) => id}

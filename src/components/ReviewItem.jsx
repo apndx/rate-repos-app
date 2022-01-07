@@ -40,14 +40,16 @@ const styles = StyleSheet.create({
   }
 });
 
-const ReviewItem = ({ review }) => {
+const ReviewItem = ({ review, userReviews }) => {
   return (
     <View style={styles.row}> 
       <View style={styles.rating}>
         <Text type='rating'>{review.rating}</Text>
       </View>
       <View style={styles.reviewItem}>
-        <Text type='username' fontWeight='bold'>{review.user.username}</Text>
+        {userReviews ? 
+        <Text type='repositoryname' fontWeight='bold'>{review.repositoryId}</Text> :
+        <Text type='username' fontWeight='bold'>{review.user.username}</Text> }      
         <Text type='description'>{format(new Date(review.createdAt), 'dd.MM.yyyy')}</Text>
         <Text type='review'>{review.text}</Text>
       </View>
