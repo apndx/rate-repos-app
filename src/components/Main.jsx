@@ -4,6 +4,7 @@ import { Route, Switch, Redirect } from 'react-router-native';
 
 import RepositoryList from './RepositoryList';
 import CreateReview from './CreateReview';
+import UserReviews from './UserReviews';
 import SignIn from './SignIn';
 import SignOut from './SignOut';
 import SignUp from './SignUp';
@@ -37,6 +38,9 @@ const Main = () => {
         </Route>
         <Route path="/review" exact>
           <CreateReview />
+        </Route>
+        <Route path="/userReviews" exact>
+          <UserReviews />
         </Route>
         <Route path="/:id" exact
         render={({ match }) => <SingleRepositoryItem id={match.params.id} />}/>

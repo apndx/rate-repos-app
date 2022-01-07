@@ -12,7 +12,6 @@ const useRepositories = (orderBy, searchKeyword) => {
     first: 6
   };
   
-
   const { data, loading, fetchMore, ...result } = useQuery(queries.GET_REPOSITORIES, {
     fetchPolicy: 'cache-and-network',
     variables

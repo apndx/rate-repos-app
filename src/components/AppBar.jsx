@@ -21,25 +21,27 @@ const styles = StyleSheet.create({
 });
 
 const AppBar = () => {
-  const authStatus = useAuthorizedUser();
-  console.log('auth status', authStatus);
+  const authStatus = useAuthorizedUser(false) ? true : false;
 
   return <View style={styles.container}>
             <ScrollView style={styles.row} horizontal={true}>
               <Link to='/'>
-              <Text type='tab'>Repositories</Text>
+                <Text type='tab'>Repositories</Text>
               </Link>
               {authStatus &&  <Link to='/review'>
-              <Text type='tab'>Create a review</Text>
+                <Text type='tab'>Create a review</Text>
+              </Link>}
+              {authStatus &&  <Link to='/userReviews'>
+                <Text type='tab'>My reviews</Text>
               </Link>}
               {!authStatus &&  <Link to='/signIn'>
-              <Text type='tab'>Sign in</Text>
+                <Text type='tab'>Sign in</Text>
               </Link>}
               {!authStatus &&  <Link to='/signUp'>
-              <Text type='tab'>Sign up</Text>
+                <Text type='tab'>Sign up</Text>
               </Link>}
               {authStatus &&  <Link to='/signOut'>
-              <Text type='tab'>Sign out</Text>
+                <Text type='tab'>Sign out</Text>
               </Link>}
             </ScrollView>
           </View>;
